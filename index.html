@@ -2,26 +2,34 @@
   <head>
     <title> Pesquisa Inovacao </title>
     <style>
-      body{
-          background-color: SteelBlue;
-          color: white;
-      }
-    </style>
+		body{
+			font-family: calibri;
+			background-color: SteelBlue;
+			color: white;
+		}
+		
+	</style> 
       
   </head>
   
+  
   <body>
-    <h1> Simões Advogados </h1>
+    
+	<div class="container">
+		<header>
+			<img src="logomarca.png" width="400px">
+			
     <h2> Pesquisa para implementação de inovações no escritório </h2>
     <h2> Favor preencher com seus dados </h2>
-    
+	
     <form action="processa.php" method="post">
       
-      <label>Text</label>
-		<imput type="text" name="Nome" placeholder="Nome">
+		<label>Nome</label>
+		<input type="Nome" name="Nome" placeholder="Nome">
             
       <br>
-      
+      <br>
+	  <br>
            
        <label>Posicao</label><br>
       <input type="radio" name="radio1" value="Socio">Socio<br>
@@ -32,7 +40,8 @@
       <input type="radio" name="radio1" value="Paralegal">Paralegal
       
       <br>
-      
+      <br>
+	  <br>
       
       <label>Area</label><br>
       <input type="radio" name="radio1" value="Tributario">Tributario<br>
@@ -42,13 +51,16 @@
       <input type="radio" name="radio1" value="Societario">Societario<br>
       <input type="radio" name="radio1" value="Fiscal">Fiscal
       
+	  <br>
+        
+	  <h4> Na sua opinião o que podemos melhorar quanto às questões tecnológicas do escritório? </h4>
+      <label>Resposta</label>
+      <input type="Resposta" name="Resposta" placeholder="Resposta">
+	  <br>
       <br>
-      
-      <label>Text</label>
-      imput type="text" name="Observacoes" placeholder="Observacoes">
-     <br>
-      
-	<imput type="submit" valeu="enviar" name="submit">
+	  <br>
+	  
+	<input type="submit" valeu="enviar" name="submit">
     
   </body>
 
