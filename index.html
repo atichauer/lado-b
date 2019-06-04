@@ -1,17 +1,55 @@
 <html>
   <head>
-    <title> Meus contatos </title>
+    <title> Pesquisa Inovacao </title>
+    <style>
+      body{
+          background-color: SteelBlue;
+          color: white;
+      }
+    </style>
+      
   </head>
+  
   <body>
-    <h1> Alberto Tichauer </h1>
-    <h2> </h2>
-    <h2> </h2>
-    <h2> </h2>
-    <h2> pagina em construção </h2>
-    <h2> </h2>
-    <h2> </h2>
-    <h2> </h2>
-    <h2> </h2>
-    <h2> +5511982088612 </h2>
+    <h1> Simões Advogados </h1>
+    <h2> Pesquisa para implementação de inovações no escritório </h2>
+    <h2> Favor preencher com seus dados </h2>
+    
+    <form action="processa.php" method="post">
+      
+      <label>Text</label>
+		<imput type="text" name="Nome" placeholder="Nome">
+            
+      <br>
+      
+           
+       <label>Posicao</label><br>
+      <input type="radio" name="radio1" value="Socio">Socio<br>
+      <input type="radio" name="radio1" value="Advogado_Senior">Advogado_Senior<br>
+      <input type="radio" name="radio1" value="Advogado_Pleno">Advogado_Pleno<br>
+      <input type="radio" name="radio1" value="Advogado_Junior">Advogado_Junior<br>
+      <input type="radio" name="radio1" value="Estagiario">Estagiario<br>
+      <input type="radio" name="radio1" value="Paralegal">Paralegal
+      
+      <br>
+      
+      
+      <label>Area</label><br>
+      <input type="radio" name="radio1" value="Tributario">Tributario<br>
+      <input type="radio" name="radio1" value="Civel">Civel<br>
+      <input type="radio" name="radio1" value="Administrativo">Administrativo<br>
+      <input type="radio" name="radio1" value="Trabalhista">Trabalhista<br>
+      <input type="radio" name="radio1" value="Societario">Societario<br>
+      <input type="radio" name="radio1" value="Fiscal">Fiscal
+      
+      <br>
+      
+      <label>Text</label>
+      imput type="text" name="Observacoes" placeholder="Observacoes">
+     <br>
+      
+	<imput type="submit" valeu="enviar" name="submit">
+    
   </body>
+
 </html>
