@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title> formulario</title>
+  </head>
+  <body>
+    <h1> Meu formulário </h1>
+    <form name="formImovel" id="formImovel" action=# method="post">
+      <label for="proprietario">Proprietario:
+      </label>
+      <input type="text" name="proprietario"
+      id="proprietario" size=70 maxlenght=200
+      placeholder="(insira o nome do proprietário)" />
+      <br />
+      <br />
+      <label for="matricula">Matricula</label>
+      <input type="number" size="10" maxlenght="7" name="matricula" placeholder="insira numero da matrícula" />
+      <br />
+      <br />
+     <button type="submit" onclick="registraImovel()" >Registrar</button>
+     <button type="reset" onclick="limpaCampos()" >Recomeçar</button>
+   </form>
+   <script>
+       function registraImovel() {
+           event.preventDefault();
+           var form = document.formImovel;
+           if(form.proprietario.value== ""){
+               alert ("Informe o nome do proprietário");
+               form.proprietario.focus();
+               return;
+           }
+           alert("A matrícula " + form.matricula.value + " é de propriedade de " + form.proprietario.value);
+        }
+   </script>
+   <script src="limpaampo.js"></script>
+  </body>
+</html>
