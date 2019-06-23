@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Página de Teste de Web3 com jQuery e Bootstrap 3</title>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align:center;">Contrato de Locação por temporada</h1>
+        <br>
+        <h2 style="text-align:center;">Locador: Cadastre seu imóvel</h2>
+        <br>
+        <div id="proprietario">
+            <form class="form-horizontal" action="/action_page.php">
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="email">Nome:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="text" placeholder="Nome do Locador">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="pwd">ID Digital</label>
+                  <div class="col-sm-10"> 
+                    <input type="number" class="form-control" id="pwd" placeholder="Insira sua ID Digital">
+                  </div>
+                </div>
+                <div>
+                    <button class="btn btn-primary btn-block" onclick="window.open('https://www.uol.com.br/')">
+                    <span class="glyphicon glyphicon-edit"></span>&nbsp;Não tem ID Digital? Clique aqui</button>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Conta Ethereum</label>
+                    <div class="col-sm-10"> 
+                      <input type="number" class="form-control" id="pwd" placeholder="Insira sua conta no Ethereum">
+                    </div>
+                </div>
+                <div>
+                        <button class="btn btn-primary btn-block" onclick="window.open('https://metamask.io/')">
+                        <span class="glyphicon glyphicon-edit"></span>&nbsp;Não tem conta no Ethereum? Clique aqui</button>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Endereço do Imóvel</label>
+                    <div class="col-sm-10"> 
+                      <input type="text" class="form-control" id="pwd" placeholder="Insira o endereço do imóvel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Valor pelo período</label>
+                    <div class="col-sm-10"> 
+                      <input type="number" class="form-control" id="pwd" placeholder="Insira o valor da locação pelo período">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Valor da garantia</label>
+                    <div class="col-sm-10"> 
+                      <input type="number" class="form-control" id="pwd" placeholder="Insira o valor da garantia exigida">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Data inicial</label>
+                    <div class="col-sm-10"> 
+                      <input type="number" class="form-control" id="pwd" placeholder="Data inicial da locação">
+                </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Data final da locação</label>
+                    <div class="col-sm-10"> 
+                      <input type="number" class="form-control" id="pwd" placeholder="Data final da locação">
+                    </div>
+                </div>
+                <div>
+                <button type="submit" class="btn btn-primary btn-block" onclick="Registrar Contrato()">
+                    <span class="glyphicon glyphicon-search"></span>&nbsp;Registrar</button>
+                </div>
+              </form>
+        <div id="resultadoPesquisa"></div>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <h2>Registrar um imóvel</h2>
+        <br>
+        <div id="registro">
+            <form action="#" method="POST" name="formRegistro" id="formRegistro">
+                <br>
+                <div>                    
+                    <label for="endereco">Informe o endereço do imóvel: </label>
+                    <input type="text" name="endereco" class="form-control inputdefault" id="endereco" size="45" />                    
+                </div>
+                <br>
+                <div>
+                    <label for="nomeProprietario">Informe o nome do proprietário: </label>
+                    <input type="text" class="form-control inputdefault" name="nomeProprietario" id="nomeProprietario" />
+                </div>
+                <br>
+                <div>
+                    <label for="valor">Informe o valor venal do imóvel: </label>
+                    <input type="number" class="form-control inputdefault" name="valor" id="valor" />
+                </div>
+                <br>
+                <div>
+                    <button class="btn btn-primary" onclick="registrarImovel()">
+                    <span class="glyphicon glyphicon-envelope" class="btn btn-primary"></span>&nbsp;Registrar</button>
+                </div>
+            </form>
+            <br>
+            <div>
+                <div id="statusTransacao">&nbsp;</div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="connectToSmartContract.js"></script>
+    <script src="abi.js"></script>
+    <script>
+        var frmPesquisa = document.formPesquisa;
+        function pesquisarImovel() {
+            event.preventDefault();
+            $("#resultadoPesquisa").html("");
+            contract.devolveNomeProprietario(frmPesquisa.matricula.value, function (erro, resultado) {
+                if (erro) {
+                    console.log("pesquisarImovel");
+                    console.error(erro);
+                    alert("Houve um erro ao pesquisar o nome do proprietário");
+                    frmPesquisa.matricula.value = "";
+                    return
+                }
+                $("#resultadoPesquisa").html("O proprietário do imóvel informado é: " + resultado);
+            })
+        }
+        var frmRegistro = document.formRegistro;
+        function registrarImovel() {
+            event.preventDefault();
+            $("#statusTransacao").html("&nbsp;");
+            contract.registraImovel(frmRegistro.endereco.value, frmRegistro.nomeProprietario.value, frmRegistro.valor.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (erro, resultado) {
+                if (erro) {
+                    console.log("registrarImovel");
+                    console.error(erro);
+                    alert("Houve um erro ao registrar esse imovel");
+                    return
+                }
+                waitForTxToBeMined(resultado, "#statusTransacao");
+            })
+        }
+    </script>
+</body>
+</html>
